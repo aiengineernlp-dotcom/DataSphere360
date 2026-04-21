@@ -17,9 +17,15 @@
 
 
 ## 🎯 The Problem
----
-
+```
+In modern e-commerce ecosystems, data is generated across multiple independent systems such as customer management, order processing, payments, product catalogs, seller networks, and customer feedback platforms. These datasets are typically fragmented and stored in separate tables, making it difficult to extract unified insights.
+```
 ## 💡 The Solution
+```
+End-to-End E-commerce Intelligence System: Building a Customer 360 Analytics Framework
+```
+
+
 
 
 
@@ -28,7 +34,7 @@
 ## 🏗Architecture  
 
 ```
-
+comming soon 
 ```
 
 ---
@@ -36,16 +42,16 @@
 ## 🛠️ Stack Technique
 
 
-| Couche | Technologie |
-|--------|------------|
-| Langage | Python 3.11+ |
-| Data | NumPy, Pandas |
+| Couche  | Technologie   |
+|---------|---------------|
+| Langage | Python 3.11+  |
+| Data    | NumPy, Pandas |
+| SGBDR   | PostgreSQL    |
 
 
 ---
 
 ## 📍 Market
-
 
 **UAE / MENA**
 
@@ -53,7 +59,13 @@
 ---
 
 ## 🗺️ Roadmap
-
+- Step 1: Data Loading and Initial Exploration
+- Step 2: Data Cleaning and Preprocessing
+- Step 3: Data Integration (Critical Component)
+- Step 4: Feature Engineering
+- Step 5: Exploratory Data Analysis (EDA)
+- Step 6: Data Visualization
+- Step 7: Business Insights and Recommendations
 
 ---
 
@@ -71,7 +83,7 @@ sur LinkedIn et GitHub, bientôt sur X aussi.
 ---
 
 ## ⚠️ Disclaimer
-
+comming soon 
 
 
 
