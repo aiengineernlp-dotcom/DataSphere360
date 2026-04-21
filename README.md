@@ -59,13 +59,13 @@ comming soon
 ---
 
 ## 🗺️ Roadmap
-- Step 1: Data Loading and Initial Exploration
-- Step 2: Data Cleaning and Preprocessing
-- Step 3: Data Integration (Critical Component)
-- Step 4: Feature Engineering
-- Step 5: Exploratory Data Analysis (EDA)
-- Step 6: Data Visualization
-- Step 7: Business Insights and Recommendations
+- Phase 1: Data Loading and Initial Exploration
+- Phase 2: Data Cleaning and Preprocessing
+- Phase 3: Data Integration (Critical Component)
+- Phase 4: Feature Engineering
+- Phase 5: Exploratory Data Analysis (EDA)
+- Phase 6: Data Visualization
+- Phase 7: Business Insights and Recommendations
 
 ---
 
