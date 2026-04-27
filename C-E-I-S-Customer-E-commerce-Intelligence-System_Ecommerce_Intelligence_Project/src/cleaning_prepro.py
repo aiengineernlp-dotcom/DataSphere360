@@ -119,3 +119,35 @@ def convert_date_col_to_date_time_format(data_sql_clean: dict) -> dict:
 
 convertion_to_datetime = convert_date_col_to_date_time_format(clean_data)
 print(convertion_to_datetime)
+
+
+
+def validate_data_type_range(data_form_sql: dict, max_val: int, min_val: int, expected_type) -> dict:
+    print("Validate data types and ranges : ")
+    all_report= []
+    for table_name, df in data_form_sql.items():
+        for col_name in df.columns:
+            # col_value = df[col_name]
+            results = {"Columns": col_name, "errors": []}
+            # Verification of data column types
+            if not pd.api.types.is_dtype_equal(df[col_name].dtype, expected_type):
+                results['errors'].append(f"Incorrect type: expected: {expected_type}, Received: {df[col_name].dtype}")
+
+            # verification of the range
+            if pd.api.types.is_numeric_dtype(df[col_name]):
+                if min_val is not None and df[col_name].min() < min_val:
+                    results['errors'].append(f" min value  out of the limite, {df[col_name].min()} '<' {min_val}")
+
+                if max_val is not None and df[col_name].max() > max_val:
+                    results['errors'].append(f" max value out of thr range, {df[col_name].max()} '>' {max_val}")
+            if results['errors']:
+                all_report.append(results)
+                print(f"error in the {results['Columns']}':' {results['errors']} ")
+            else:
+                print("✅ data validated")
+
+    return data_form_sql
+
+
+r = validate_data_type_range(convertion_to_datetime, 10000, 1, object)
+print(r)
