@@ -1,6 +1,7 @@
 
 from sqlalchemy import create_engine
 import pandas as pd
+import datetime
 
 # -0- connection to the data base PostgreSql
 engine_erman_connexion_to__dataspere360 = create_engine(
@@ -91,9 +92,30 @@ def remove_duplicated_record(data_clean_from_sql: dict) -> dict:
 
         df_clean.drop_duplicates(inplace=True)
 
-    return duplicated_records
+    return data_clean_from_sql
 
 
-r = remove_duplicated_record(imputation)
+clean_data = remove_duplicated_record(imputation)
 
 print(fr"{'=' * 40}remove_duplicated_record  {'=' * 40}")
+
+
+def convert_date_col_to_date_time_format(data_sql_clean: dict) -> dict:
+    print("\n🚀 ETAPE  Convert date columns to datetime format ...")
+    liste = []
+    for table_name, df in data_sql_clean.items():  # level 1 : only at the overview of table_name and df
+        for col_name in df.columns:  # level 2 inside df and table_name
+            # print(df[col_name]) # log verification
+
+            if pd.api.types.is_datetime64_any_dtype(df[col_name]) or pd.api.types.is_datetime64_dtype(df[col_name]):
+                print(f" {col_name} already converted ")
+                continue
+
+            if 'date' in col_name.lower():
+                liste.append(col_name)
+                df[col_name] = pd.to_datetime(df[col_name])  # ignore: if can't be conerv=ted it will leave it as its is
+                print(f"✅ Convertion of {col_name} Done with the  else block")
+    return data_sql_clean # data_sql_clean.keys() can be use to see the keys but not recommended
+
+convertion_to_datetime = convert_date_col_to_date_time_format(clean_data)
+print(convertion_to_datetime)
