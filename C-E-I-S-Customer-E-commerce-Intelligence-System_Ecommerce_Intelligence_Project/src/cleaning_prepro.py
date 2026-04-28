@@ -121,33 +121,50 @@ convertion_to_datetime = convert_date_col_to_date_time_format(clean_data)
 print(convertion_to_datetime)
 
 
+def validate_data_type_and_range(data_clean: dict, max_value: int, min_val: int, expected_type) -> dict:
+    """
+    Use case :
+        - Type validation (Verification) : Base on logic of how the type should be, we need to know if the the type expected is actually what we have. Exemple: df['age'] should ne type int64, not something else,
+        - Range validation (Verification) : Base on logic of how the range should be, we need to know if we are in the normal range. Exemple df['age'] should not be up to 130.
+        -
 
-def validate_data_type_range(data_form_sql: dict, max_val: int, min_val: int, expected_type) -> dict:
-    print("Validate data types and ranges : ")
-    all_report= []
-    for table_name, df in data_form_sql.items():
+    Args:
+        - data_clean :
+        - max_value: is the value that fit my need, the value that df[col_name] SHOULD NOT CROSS UP
+        - min_val : is the value that fit my need, the value that df[col_name] SHOULD NOT CROSS DOWN
+
+    Returns:
+        - dict:  report result
+    """
+    final_report = {}
+    for data_table, df in data_clean.items():
         for col_name in df.columns:
-            # col_value = df[col_name]
             results = {"Columns": col_name, "errors": []}
-            # Verification of data column types
-            if not pd.api.types.is_dtype_equal(df[col_name].dtype, expected_type):
-                results['errors'].append(f"Incorrect type: expected: {expected_type}, Received: {df[col_name].dtype}")
+            col_value = df[col_name]
 
-            # verification of the range
+            # validation of type (Verification if the type that my col_name is same as expected)
+            if not pd.api.types.is_dtype_equal(df[col_name].dtype, expected_type):  # if type are not egual
+                results['errors'].append(
+                    f"Type Error bro: Expected type is {expected_type} But receive is {df[col_name].dtype}")
+
+            # validation of type (Verification if the range that my col_name has is  "normal or logic ")
             if pd.api.types.is_numeric_dtype(df[col_name]):
-                if min_val is not None and df[col_name].min() < min_val:
-                    results['errors'].append(f" min value  out of the limite, {df[col_name].min()} '<' {min_val}")
+                if min_val is not None and (df[col_name].min() < min_val):
+                    results['errors'].append(f"Min value of {col_name} out of range {df[col_name].min()}  < {min_val}")
 
-                if max_val is not None and df[col_name].max() > max_val:
-                    results['errors'].append(f" max value out of thr range, {df[col_name].max()} '>' {max_val}")
-            if results['errors']:
-                all_report.append(results)
-                print(f"error in the {results['Columns']}':' {results['errors']} ")
+                if max_value is not None and (df[col_name].max() > max_value):
+                    results['errors'].append(
+                        f"Max value of {col_name} out of range {df[col_name].max()}  > {max_value}")
+
+            if results["errors"]:
+                final_report[f"{data_table}.{col_name}"] = results['errors']
+                print(f"❌ Error on the results {results['errors']}, for the columns {results['Columns']}  ")
             else:
-                print("✅ data validated")
+                print(f"{col_name} ✅  YOU are good to go data validated!!")
+    return final_report
 
-    return data_form_sql
 
-
-r = validate_data_type_range(convertion_to_datetime, 10000, 1, object)
+r = validate_data_type_and_range(convertion_to_datetime, 100000, 0, object)
 print(r)
+
+
