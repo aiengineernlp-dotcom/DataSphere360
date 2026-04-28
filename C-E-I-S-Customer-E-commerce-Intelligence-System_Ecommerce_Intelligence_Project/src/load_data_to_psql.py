@@ -52,14 +52,16 @@ def push_data_to_psql(filepath: str, table_name: str) -> str:
 # Utilisation
 
 customers = push_data_to_psql('../E_commerce_datasets/customers.csv', "customers")
-location = push_data_to_psql('../E_commerce_datasets/customers.csv', 'location')
-order_item = push_data_to_psql('../E_commerce_datasets/customers.csv', 'order_item')
-orders = push_data_to_psql('../E_commerce_datasets/customers.csv', "orders")
-products = push_data_to_psql('../E_commerce_datasets/customers.csv', "products")
-reviews = push_data_to_psql('../E_commerce_datasets/customers.csv', "reviews")
-sellers = push_data_to_psql('../E_commerce_datasets/customers.csv', "sellers")
-category_translation = push_data_to_psql('../E_commerce_datasets/customers.csv',                                      'category_translation')
-payments = push_data_to_psql('../E_commerce_datasets/customers.csv', "payments")
+location = push_data_to_psql('../E_commerce_datasets/location.csv', 'location')
+order_item = push_data_to_psql('../E_commerce_datasets/order_item.csv', 'order_item')
+orders = push_data_to_psql('../E_commerce_datasets/orders.csv', "orders")
+products = push_data_to_psql('../E_commerce_datasets/products.csv', "products")
+reviews = push_data_to_psql('../E_commerce_datasets/reviews.csv', "reviews")
+sellers = push_data_to_psql('../E_commerce_datasets/sellers.csv', "sellers")
+category_translation = push_data_to_psql('../E_commerce_datasets/category_translation.csv',   'category_translation')
+payments = push_data_to_psql('../E_commerce_datasets/payments.csv', "payments")
+
+
 
 print(customers)
 print(location)

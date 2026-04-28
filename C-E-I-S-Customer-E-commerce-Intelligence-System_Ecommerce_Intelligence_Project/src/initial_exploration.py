@@ -74,7 +74,7 @@ head, info, describe = inspect_data_structure_in_360(my_sql_dataset)
 
 
 
-def identify_fk_pk(data_from_sql: dict) -> dict:
+def f_identify_fk_pk(data_from_sql: dict) -> dict:
     all_data = {}
     all_key_pot_save = {}
     unique={}
@@ -101,8 +101,8 @@ def identify_fk_pk(data_from_sql: dict) -> dict:
     return unique
 
 
-r = identify_fk_pk(fetch_dataSet)
-print(r)
+c_f_indentify_p_f_key = f_identify_fk_pk(fetch_dataSet)
+print(c_f_indentify_p_f_key)
 
 
 def understanding_relation_between_tables(data_set_from_sql: dict) -> dict:
