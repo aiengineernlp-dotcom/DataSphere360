@@ -168,3 +168,27 @@ r = validate_data_type_and_range(convertion_to_datetime, 100000, 0, object)
 print(r)
 
 
+def standardize_col_name(data_clean: dict)->dict:
+
+    for table_name, df in data_clean.items():
+        df.columns = (df.columns.str.strip().str.lower().str.replace(' ', '_',regex=False).str.replace('.','_',regex=False))
+        print(f"Column standartized for the columns:  {table_name}")
+
+    return data_clean
+r = standardize_col_name(convertion_to_datetime)
+
+
+# version -2-
+# def standardize_col_name(data_clean: dict) -> dict:
+#     for table_name, df in data_clean.items():
+#         old_columns = list(df.columns[:3])
+#         df.columns = (
+#             df.columns.str.strip().str.lower().str.replace(' ', '_', regex=False).str.replace('.', '_', regex=False))
+#         new_columns = list(df.columns[:3])
+#         print(f"Column standartized for the columns:  {table_name}")
+#
+#     return data_clean
+#
+#
+# r = standardize_col_name(convertion_to_datetime)
+# print(r)
