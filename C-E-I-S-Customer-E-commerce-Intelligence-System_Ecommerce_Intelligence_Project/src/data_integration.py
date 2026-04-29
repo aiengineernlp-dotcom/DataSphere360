@@ -55,7 +55,7 @@ def data_integration(data_clean_from_sql: dict) -> pd.DataFrame:
 
 
 r_data_integration = data_integration(data_clean_final) # I use the result of the function standardize_col_name
-print(f"\nSUCCESS ! Nombre de colonnes : {len(r_data_integration.columns)}")
+print(f"\nSUCCESS ! Numbers of Columns : {len(r_data_integration.columns)}")
 # print(r_data_integration.columns)
 
 print(data_clean_final['order_item'].head())
