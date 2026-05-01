@@ -27,7 +27,6 @@ from data_integration import r_data_integration
       dtype='object')   """
 import pandas as pd
 
-
 def create_other_features(df: pd.DataFrame) -> pd.DataFrame:
     df_final = df.copy()
     # Total order value (aggregated from order_items or payments)
