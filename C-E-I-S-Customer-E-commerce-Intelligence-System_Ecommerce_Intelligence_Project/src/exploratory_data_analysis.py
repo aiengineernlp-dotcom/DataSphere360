@@ -29,7 +29,7 @@ plt.show()
 
 
 # High-value vs low-value customers
-x = r_create_other_features[r_create_other_features['Customer_lifetime_value'] < 900]['Customer_lifetime_value'] # base on the fact that most customer spent let that 1000
+x = r_create_other_features[r_create_other_features['Customer lifetime value'] < 900]['Customer lifetime value'] # base on the fact that most customer spent let that 1000
 #displY
 plt.hist(x, bins= 30, color = 'skyblue', edgecolor='black')
 plt.title(" Customer lifetime value ")
