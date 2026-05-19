@@ -1,0 +1,13 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: datasphere360_customer_ecommerce
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD : postgres
+    ports:
+      - "5500:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:                          # volume nommé — les données survivent aux redémarrages

@@ -12,7 +12,7 @@ pd.set_option('display.expand_frame_repr', False)
 
 
 # -0- connection to the data base PostgreSql that i choose to use
-engine_erman_connexion_to__dataspere360 = create_engine('postgresql://postgres:postgres@localhost:5555/datasphere360_customer_ecommerce')
+engine_erman_connexion_to__dataspere360 = create_engine('postgresql://postgres:postgres@localhost:5500/datasphere360_customer_ecommerce')
 
 
 # -1- I need to send my data to the Database PostgreSql,
